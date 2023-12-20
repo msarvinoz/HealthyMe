@@ -20,6 +20,7 @@ class AboutSite(models.Model):
     gmail = models.EmailField(null=True, blank=True)
     location_name = models.CharField(max_length=255, null=True, blank=True)
     location_map = models.URLField(null=True, blank=True)
+    hero_img = models.ImageField(upload_to='media/')
 
 
 class Services(models.Model):
@@ -109,11 +110,21 @@ class DailyPlan(models.Model):
 
 
 class Question(models.Model):
+    message = models.TextField()
     from_user = models.ForeignKey(Person, on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now_add=True)
     about = models.ForeignKey(Disease, on_delete=models.CASCADE)
-    message = models.TextField()
 
+    def __str__(self):
+        return self.message
+
+
+class Answer(models.Model):
+    answer_to = models.ForeignKey(Question, on_delete=models.PROTECT)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.answer
 
 class AllowedMeal(models.Model):
     meal = models.CharField(max_length=255)

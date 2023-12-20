@@ -5,8 +5,10 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+
 urlpatterns = [
     # index urls
+    path('', index_view, name='index_url'),
     path('site/', home_view),
     path('services/', service_view),
     path('calorie/', calorie_view),

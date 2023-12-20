@@ -272,3 +272,19 @@ def notification_alert(request):
     except DailyPlan.DoesNotExist:
         return Response("Daily plan does not exist for this user!", status=status.HTTP404NOTFOUND)
 
+
+
+# html
+def index_view(request):
+    site = AboutSite.objects.last()
+    service = Services.objects.all().order_by('id')[:3]
+    feature = Services.objects.all().order_by('id')[3:]
+    answer = Answer.objects.all().order_by('id')[:4]
+    context = {
+        'site': site,
+        'service': service,
+        'feature': feature,
+        'answer': answer
+    }
+    return render(request, 'index.html', context)
+
