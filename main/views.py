@@ -288,3 +288,38 @@ def index_view(request):
     }
     return render(request, 'index.html', context)
 
+
+# cabinet
+# def register_view(request):
+#     first_name = request.data.get('first_name')
+#     email = request.data.get('email')
+#     password = request.data.get('password')
+#     patient = Person.objects.create(first_name=first_name, email=email, password=password)
+#     patient.save()
+#     return render(request, 'register.html')
+
+
+def register_view(request):
+    User = get_user_model()
+    if request.method == 'POST':
+        username = request.data.get('username')
+        age = request.data.get('age')
+        height = request.data.get('height')
+        weight = request.data.get('weight')
+        gender = request.data.get('gender')
+        symptoms = request.data.get('symptoms')
+        disease = request.data.get('disease')
+
+        new_user = User.objects.create_user(username=username, age=age, height=height, weight=weight, gender=gender, symptoms=symptoms,
+                                            disease_id=disease)
+        new_user.save()
+
+        # # Generate token for the new user
+        # refresh = RefreshToken.for_user(new_user)
+        #
+        # return Response({
+        #     'refresh': str(refresh),
+        #     'access': str(refresh.access_token),
+        # })
+
+    return render(request, 'register.html')

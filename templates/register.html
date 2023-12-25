@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,18 +15,17 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
     <title>My Healthy Life</title>
+    <title>Document</title>
 </head>
-
 <body>
-    <h1 class="visually__hidden">Healthy Me</h1>
     <header id="header">
         <nav>
             <div class="img__link">
-                <a href="{% url 'index_url' %}">
+                <a href="./index.html">
                     <div data-aos="fade-down" data-aos-duration="1300">
-                        <img src="{{ site.company_logo.url }}" alt="logo" width="50" height="41">
+                        <img src="./img/logo.png" alt="logo" width="50" height="41">
                     </div>
                 </a>
             </div>
@@ -44,100 +42,73 @@
                 <li class="nav__item">
                     <a href="{% url 'index_url' %}#faq">FAQ</a>
                 </li>
-                <a href="{% url 'register_url' %}" class="btn">Register</a>
+                <a href="" class="btn">Register</a>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="hero">
+        <section id="register">
             <div class="container">
-                <div class="banner" data-aos="fade-down" data-aos-duration="1300">
-                    <div class="hero__img1">
-                        <img class="hero__img" data-aos="zoom-out" data-aos-duration="1100"
-                            src="{{ site.hero_img.url }}"
-                            alt="banner img">
+                <img class="reg__img" src="{% static 'media/Lifesavers Bust.png' %}" alt="img">
+
+                <h3 class="reg__title">Welcome to<br>
+                    <span>HealthyMe</span></h3>
+                    <div class="reg__btn">
+                        <a href="{% url 'register_url' %}#signup"><button class="btn__1" type="button" style="color: white;">Sign up</button></a><br>
+                        <a href="{% url 'register_url' %}#login"><button class="btn__2" type="button">Log in</button></a>
                     </div>
 
-                    <div class="overlay">
-                        <h3><span>{{site.purpose}} </span>
-                            for all your dietary needs.</h3>
-                        <p>{{site.about}}</p>
-                        <br>
-                        <a href="{% url 'register_url' %}" class="hero__btn">Start exploring</a>
-                    </div>
-                </div>
             </div>
         </section>
-        <section id="services">
+
+        <section id="login">
             <div class="container">
-                <div class="services__inner" data-aos="zoom-out-down" data-aos-duration="1500">
-                    <h2 class="service__title">Our Services</h2>
-                    <ul class="services__list">
-                            {% for i in service %}
-                        <a class="service__info" href="">
-                            <li class="services__item">
-                                <img src="{{ i.img.url }}" alt="services" width="80" height="60">
-                                <h4>{{i.service_name}}</h4>
-                                <p class="service__text">{{i.about}}</p>
-                            </li>
-                            {% endfor %}
-                        </a>
-                    </ul>
+                <div class="general__login">
+                    <img class="login__img" src="{% static 'media/Lifesavers Bust.png' %}" alt="img">
+                    <h3 class="login__title">Welcome back<br>
+                        <span>Login</span></h3>
+                        <form class="general__form">
+                            <div class="login__form">
+                                <input type="email" placeholder="Email" required>
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <a href="#"><h6 class="pass__forgot">Forgot Password?</h6></a>
+                            <a href=""><button type="submit" style="cursor: pointer;">Login</button></a>
+                            <h6 class="signupText">Don’t have an account?
+                                <a href="{% url 'register_url' %}">Sign Up</a>
+                            </h6>
+                        </form>
                 </div>
+
             </div>
         </section>
-        <section id="services">
+
+        <section id="signup">
             <div class="container">
-                <div class="features__inner" data-aos="fade-down" data-aos-duration="1100">
-                    <h2 class="service__title">Features we provide</h2>
-
-                    <div class="feature__main">
-                        <h3 class="features__title">Control your daily actions to stay healthy</h3>
-                        <img class="feature__img" src="./img/Heart Rate.png" alt="heart rate" width="60" height="70">
-                        <p class="features__text">Get recommendations and monitor your day.</p>
-                        <br>
-                        <a class="btn__feature" href="">Start your journey</a>
-                    </div>
-                    <div class="feature__listSection">
-                        <ul class="features__list">
-                            <li class="feature__item">
-                                {% for i in feature %}
-                                <img src="{{ i.img.url }}" alt="feature" width="90">
-                                <h5>{{i.service_name}}</h5>
-                                <p>{{i.about}}</p>
-                                {% endfor %}
-                            </li>
-
-                        </ul>
-                    </div>
-
+                <div class="signup__wrapper">
+                    <img class="signup__img" src="{% static 'media/Lifesavers Bust.png' %}" alt="img">
+                    <h3 class="signup__title">Hello Beautiful <br>
+                        <span>Sign Up</span></h3>
+                    <form class="signup__form">
+                        <div class="signup__inputs">
+                            <input type="text" placeholder="Fullname" required>
+                            <input type="email" placeholder="Email" required>
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                        <a class="signup__passfor" href=""><h6>Forgot Password?</h6></a>
+                        <a class="signup__btn" href=""><button type="submit">Sign Up</button></a>
+                        <h6 class="loginText">Already have an account?
+                            <a href="{% url 'register_url' %}">Login</a></h6>
+                    </form>
                 </div>
             </div>
         </section>
-        <section id="faq">
-            <div class="container" data-aos="zoom-in" data-aos-duration="1000">
-                <h2 class="faq__title">Frequently Asked Questions</h2>
-                <div class="faq__inner">
-                    <ul class="faq__list">
-                        {% for i in answer %}
-                        <li class="faq__item">
-                            <p class="faq__question">
-                            {{ i.answer_to.message }}
-                            </p>
-                            <hr color="#1678F2">
-                            <p class="faq__answer">{{ i.answer }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
 
-            </div>
-        </section>
     </main>
     <footer>
         <div class="footer__inner">
             <ul class="footer__main">
-                <img src="{{ site.company_logo.url }}" alt="logo" width="60" height="40">
+                <img src="./img/logo.png" alt="logo" width="60" height="40">
                 <h2>HealthyMe</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam</p>
                 <ul class="social__media">
@@ -213,6 +184,5 @@
 <script>
     AOS.init();
 </script>
-<script src="./js/main.js"></script>
-
+<script src="{% static 'main.js' %}"></script>
 </html>

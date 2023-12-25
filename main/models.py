@@ -151,3 +151,5 @@ class PersonalDiet(models.Model):
 
 class Notification(models.Model):
     remind = models.ForeignKey(DailyPlan, on_delete=models.CASCADE)
+
+

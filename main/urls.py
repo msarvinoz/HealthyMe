@@ -36,4 +36,7 @@ urlpatterns = [
     # token
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    #cabinet
+    path('register/', register_view, name='register_url')
 ]
